@@ -69,13 +69,8 @@ export class LoginPage {
   openLoad() {
     this.loading = this.loadingCtrl.create({
       content: 'Carregando Dados...'
-    });
-  
+    });  
     this.loading.present();
-  
-    // setTimeout(() => {
-    //   this.loading.dismiss();
-    // }, 5000);
   }
 
   closeLoad(){

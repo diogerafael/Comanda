@@ -18,11 +18,16 @@
 <ion-content padding>
   <ion-label>Selecionar Vendedor</ion-label>
   <ion-item>
-  <ion-select [(ngModel)]="codVendedor">
-      <ion-option *ngFor="let vendedor of listaVendedores" [value]="vendedor.codVend">{{vendedor.nomeVend}}</ion-option>      
+  <ion-select [(ngModel)]="codVendedor" style="width: 100%">
+      <ion-option style="width: 100%" *ngFor="let vendedor of listaVendedores" [value]="vendedor.codVend">{{vendedor.nomeVend}}</ion-option>      
   </ion-select>
 </ion-item>
 
+
+<ion-item>
+  <ion-label> Permanecer Logado</ion-label>  
+  <ion-toggle  checked="false"></ion-toggle>
+</ion-item>
   
   <button large ion-button color="secondary" round >OK</button>
   <button large ion-button color="secondary" round (click)="abrirProduto()">Produtos</button>

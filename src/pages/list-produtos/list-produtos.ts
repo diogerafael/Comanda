@@ -24,8 +24,36 @@ export class ListProdutosPage {
 
   ionViewDidEnter(){
     //carregar produtos
-    
-    this.produtosServiceProvider.getProdutos().subscribe(
+      
+  }
+
+  itemTapped(event, item) {
+    // That's right, we're pushing to ourselves!
+    console.log(item);    
+  }
+
+
+  getItems(ev) {
+    // Reset items back to all of the items
+    //this.initializeItems();
+
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+      if (val && val.trim() != '') {
+        this.loadData(val);
+       //this.items = this.items.filter((item) => {
+       //  return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      // })
+     }else{
+       this.produtos = null;
+     }
+  }
+
+
+  loadData(val:string){
+    this.produtosServiceProvider.getProdutosByDesc(val).subscribe(
       data=>{
         const response = (data as any);
         const objeto_retorno = JSON.parse(response._body);
@@ -41,27 +69,6 @@ export class ListProdutosPage {
        // this.closeLoad();
       }
     )    
-  }
-
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    console.log(item);    
-  }
-
-
-  getItems(ev) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the ev target
-    var val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
   }
 
 }
