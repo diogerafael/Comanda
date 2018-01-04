@@ -9,6 +9,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {LoginPage} from '../pages/login/login'
 import { VendedoresServiceProvider } from '../providers/vendedores-service/vendedores-service';
+import { ListProdutosPage } from '../pages/list-produtos/list-produtos';
+import { ListProdutosPageModule } from '../pages/list-produtos/list-produtos.module';
+import { ProdutosServiceProvider } from '../providers/produtos-service/produtos-service';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { VendedoresServiceProvider } from '../providers/vendedores-service/vende
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    ListProdutosPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,7 +35,8 @@ import { VendedoresServiceProvider } from '../providers/vendedores-service/vende
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    VendedoresServiceProvider
+    VendedoresServiceProvider,
+    ProdutosServiceProvider
   ]
 })
 export class AppModule {}

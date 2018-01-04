@@ -5,8 +5,10 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>    
     <ion-title>Acesso ao Sistema</ion-title>
   </ion-navbar>
 
@@ -15,8 +17,15 @@
 
 <ion-content padding>
   <ion-label>Selecionar Vendedor</ion-label>
-  <ion-select [(ngModel)]="gaming">
-      <ion-option *ngFor="let vendedor of listaVendedores" value="nes">{{vendedor.nomeVend}}</ion-option>      
+  <ion-item>
+  <ion-select [(ngModel)]="codVendedor">
+      <ion-option *ngFor="let vendedor of listaVendedores" [value]="vendedor.codVend">{{vendedor.nomeVend}}</ion-option>      
   </ion-select>
+</ion-item>
+
+  
+  <button large ion-button color="secondary" round >OK</button>
+  <button large ion-button color="secondary" round (click)="abrirProduto()">Produtos</button>
+
 
 </ion-content>

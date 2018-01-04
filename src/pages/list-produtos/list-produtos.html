@@ -1,0 +1,23 @@
+<!--
+  Generated template for the ListProdutosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Produtos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <!-- <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>v -->
+  <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-card *ngFor="let item of produtos" (click)="itemTapped($event, item)">    
+    <div class="card-title">{{item.nomePro}}</div>
+    <div class="card-subtitle">{{item.codro}}</div>
+  </ion-card>
+</ion-content>
