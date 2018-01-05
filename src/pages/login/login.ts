@@ -4,27 +4,33 @@ import { VendedoresServiceProvider } from '../../providers/vendedores-service/ve
 import { errorHandler } from '@angular/platform-browser/src/browser';
 import { ListProdutosPage } from '../list-produtos/list-produtos';
 import { ConfigPage } from '../config/config';
+import {ConfigProvider} from '../../providers/config/config'
+import { ListMesasPage } from '../list-mesas/list-mesas';
 
 @IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
   providers:[
-    VendedoresServiceProvider
+    VendedoresServiceProvider,
+    ConfigProvider
   ]
 })
 export class LoginPage {
 
   public loading;
   public listaVendedores = Array<any>();
-  codVendedor:number;
+  public selectecUser = {save_login:false,cod_user:0,pass_user:"",};
 
   public backgroundImage = 'assets/imgs/background/background-5.jpg';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private vendedorService:VendedoresServiceProvider,
-              private loadingCtrl: LoadingController
+              private loadingCtrl: LoadingController,
+              private configProvider:ConfigProvider
             ) {
+              let config = this.configProvider.getConfigData();
+              console.log(config);
   }
 
   ionViewDidEnter() {
@@ -84,5 +90,12 @@ export class LoginPage {
   openPageConfig(){
     this.navCtrl.push(ConfigPage);
   }
+
+  logar(){
+    console.log(this.selectecUser);
+    this.configProvider.setConfigData(this.selectecUser.save_login,this.selectecUser.cod_user);
+    this.navCtrl.push(ListMesasPage);
+  }
+
 
 }

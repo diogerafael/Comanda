@@ -21,7 +21,8 @@ export class ConfigProvider {
   }
 
   setConfigData(save_login?:boolean,cod_user?:number,pass_user?:string,ip_servidor?:string){
-    let config = {  save_login:false,
+    let config = {  
+      save_login:false,
       cod_user:0,
       pass_user:"",
       ip_servidor:""

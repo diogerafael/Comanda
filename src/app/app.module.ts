@@ -14,6 +14,8 @@ import { ListProdutosPageModule } from '../pages/list-produtos/list-produtos.mod
 import { ProdutosServiceProvider } from '../providers/produtos-service/produtos-service';
 import { ConfigPageModule } from '../pages/config/config.module';
 import { ConfigProvider } from '../providers/config/config';
+import { ListMesasPageModule } from '../pages/list-mesas/list-mesas.module';
+import { ListMesasPage } from '../pages/list-mesas/list-mesas';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { ConfigProvider } from '../providers/config/config';
     IonicModule.forRoot(MyApp),
     HttpModule,
     ListProdutosPageModule,
-    ConfigPageModule
+    ConfigPageModule,
+    ListMesasPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage    
+    LoginPage,
+    ListMesasPage
   ],
   providers: [
     StatusBar,
