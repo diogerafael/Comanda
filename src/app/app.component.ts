@@ -5,8 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { ConfigProvider } from '../providers/config/config';
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers:[
+    ConfigProvider
+  ]
 })
 export class MyApp {
   rootPage:any = LoginPage;

@@ -6,31 +6,44 @@
 -->
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <!-- <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>    
-    <ion-title>Acesso ao Sistema</ion-title>
+    <ion-title>Acesso ao Sistema</ion-title> -->
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="transparent-header" [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+  
+  <ion-item>
   <ion-label>Selecionar Vendedor</ion-label>
+</ion-item>
   <ion-item>
   <ion-select [(ngModel)]="codVendedor" style="width: 100%">
       <ion-option style="width: 100%" *ngFor="let vendedor of listaVendedores" [value]="vendedor.codVend">{{vendedor.nomeVend}}</ion-option>      
   </ion-select>
 </ion-item>
 
+<ion-item>
+  <ion-label floating>Password</ion-label>
+  <ion-input type="password"></ion-input>
+</ion-item>
 
 <ion-item>
   <ion-label> Permanecer Logado</ion-label>  
   <ion-toggle  checked="false"></ion-toggle>
 </ion-item>
-  
-  <button large ion-button color="secondary" round >OK</button>
-  <button large ion-button color="secondary" round (click)="abrirProduto()">Produtos</button>
+
+ <ion-item>
+  <button large ion-button color="secondary" full >OK</button>
+</ion-item> 
+  <!-- <button large ion-button color="secondary" round (click)="abrirProduto()">Produtos</button> -->
+
+  <ion-fab right bottom style="margin-right:5%">
+      <button (click)="openPageConfig()" ion-fab color="secondary" m><ion-icon name="settings"></ion-icon></button>      
+    </ion-fab>
 
 
 </ion-content>

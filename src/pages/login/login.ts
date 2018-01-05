@@ -3,13 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { VendedoresServiceProvider } from '../../providers/vendedores-service/vendedores-service';
 import { errorHandler } from '@angular/platform-browser/src/browser';
 import { ListProdutosPage } from '../list-produtos/list-produtos';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ConfigPage } from '../config/config';
 
 @IonicPage()
 @Component({
@@ -20,9 +14,13 @@ import { ListProdutosPage } from '../list-produtos/list-produtos';
   ]
 })
 export class LoginPage {
+
   public loading;
   public listaVendedores = Array<any>();
   codVendedor:number;
+
+  public backgroundImage = 'assets/imgs/background/background-5.jpg';
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private vendedorService:VendedoresServiceProvider,
               private loadingCtrl: LoadingController
@@ -80,6 +78,11 @@ export class LoginPage {
 
   abrirProduto(){
     this.navCtrl.push(ListProdutosPage);
+  }
+
+
+  openPageConfig(){
+    this.navCtrl.push(ConfigPage);
   }
 
 }

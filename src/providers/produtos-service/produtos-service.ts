@@ -15,11 +15,11 @@ export class ProdutosServiceProvider {
   }
 
   getProdutos(){
-    return this.http.get("http://192.168.0.119:8080/datasnap/rest/TTSM/Produtos");
+    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Produtos");
   }
 
   getProdutosByDesc(ADesc){
-    return this.http.get("http://192.168.0.119:8080/datasnap/rest/TTSM/Produtos/0/"+ADesc);
+    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Produtos/0/"+ADesc);
   }
 
 }

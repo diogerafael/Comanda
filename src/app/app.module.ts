@@ -12,6 +12,8 @@ import { VendedoresServiceProvider } from '../providers/vendedores-service/vende
 import { ListProdutosPage } from '../pages/list-produtos/list-produtos';
 import { ListProdutosPageModule } from '../pages/list-produtos/list-produtos.module';
 import { ProdutosServiceProvider } from '../providers/produtos-service/produtos-service';
+import { ConfigPageModule } from '../pages/config/config.module';
+import { ConfigProvider } from '../providers/config/config';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ProdutosServiceProvider } from '../providers/produtos-service/produtos-
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    ListProdutosPageModule
+    ListProdutosPageModule,
+    ConfigPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +39,8 @@ import { ProdutosServiceProvider } from '../providers/produtos-service/produtos-
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     VendedoresServiceProvider,
-    ProdutosServiceProvider
+    ProdutosServiceProvider,
+    ConfigProvider
   ]
 })
 export class AppModule {}
