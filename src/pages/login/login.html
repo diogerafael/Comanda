@@ -21,8 +21,8 @@
   <ion-label>Selecionar Vendedor</ion-label>
 </ion-item>
   <ion-item>
-  <ion-select [(ngModel)]="selectecUser.cod_user" style="width: 100%">
-      <ion-option style="width: 100%" *ngFor="let vendedor of listaVendedores" [value]="vendedor.codVend">{{vendedor.nomeVend}}</ion-option>      
+  <ion-select  style="width: 100%">
+       <ion-option style="width: 100%" *ngFor="let ven of listaVendedores" >{{ven.nomeVend}}</ion-option>       
   </ion-select>
 </ion-item>
 

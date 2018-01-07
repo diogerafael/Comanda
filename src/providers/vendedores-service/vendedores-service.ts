@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Vendedor } from '../../pages/login/vendedor.model';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 /*
   Generated class for the VendedoresServiceProvider provider.
@@ -9,14 +12,13 @@ import { Http } from '@angular/http';
 */
 @Injectable()
 export class VendedoresServiceProvider {
-  //private BASE_URL = "";
-
-  constructor(public http: Http) {
-    console.log('Hello VendedoresServiceProvider Provider');
+  
+  constructor(private http: Http) {   
   }
 
-  getVendedores(){
-   return this.http.get("http://192.168.0.119:8080/datasnap/rest/TTSM/Vendedores/0");
+  getVendedores():Observable<Vendedor[]>{
+   return this.http.get("http://127.0.0.1:8080/datasnap/rest/TTSM/Vendedores/0").
+   map(response => response.json().result[0].data);  
   }
 
 }

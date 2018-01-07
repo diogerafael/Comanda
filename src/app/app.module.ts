@@ -16,6 +16,7 @@ import { ConfigPageModule } from '../pages/config/config.module';
 import { ConfigProvider } from '../providers/config/config';
 import { ListMesasPageModule } from '../pages/list-mesas/list-mesas.module';
 import { ListMesasPage } from '../pages/list-mesas/list-mesas';
+import { MesasServiceProvider } from '../providers/mesas-service/mesas-service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ListMesasPage } from '../pages/list-mesas/list-mesas';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     VendedoresServiceProvider,
     ProdutosServiceProvider,
-    ConfigProvider
+    ConfigProvider,
+    MesasServiceProvider
   ]
 })
 export class AppModule {}

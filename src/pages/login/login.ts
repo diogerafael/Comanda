@@ -5,7 +5,8 @@ import { errorHandler } from '@angular/platform-browser/src/browser';
 import { ListProdutosPage } from '../list-produtos/list-produtos';
 import { ConfigPage } from '../config/config';
 import {ConfigProvider} from '../../providers/config/config'
-import { ListMesasPage } from '../list-mesas/list-mesas';
+import { ListMesasPage } from '../list-mesas/list-mesas'; 
+import {Vendedor} from '../login/vendedor.model';
 
 @IonicPage()
 @Component({
@@ -19,10 +20,12 @@ import { ListMesasPage } from '../list-mesas/list-mesas';
 export class LoginPage {
 
   public loading;
-  public listaVendedores = Array<any>();
+  //public listaVendedores = Array<any>();
+  listaVendedores : Vendedor[];
+  
   public selectecUser = {save_login:false,cod_user:0,pass_user:"",};
 
-  public backgroundImage = 'assets/imgs/background/background-5.jpg';
+  public backgroundImage = 'assets/imgs/background/principal.png';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private vendedorService:VendedoresServiceProvider,
@@ -30,27 +33,35 @@ export class LoginPage {
               private configProvider:ConfigProvider
             ) {
               let config = this.configProvider.getConfigData();
-              console.log(config);
+              //console.log(config);
   }
 
   ionViewDidEnter() {
     this.openLoad();
-    this.vendedorService.getVendedores().subscribe(
-      data=>{
-        const response = (data as any);
-        const objeto_retorno = JSON.parse(response._body);
-        console.log(objeto_retorno);
-        //console.log(data);
-        if (objeto_retorno.result[0].status=200){//popular lista
-          this.listaVendedores = objeto_retorno.result[0].data;          
-        }                
-        this.closeLoad();
-        console.log("To aqui");
-      },error =>{
-        console.log(error);
-        this.closeLoad();
-      }
-    )    
+    this.vendedorService.getVendedores().subscribe(Vendedores =>
+      { 
+        console.log(Vendedores);
+        this.listaVendedores = Vendedores})
+    console.log(this.listaVendedores
+    );
+    this.closeLoad();;
+    
+    // this.vendedorService.getVendedores().subscribe(
+    //   data=>{
+    //     const response = (data as any);
+    //     const objeto_retorno = JSON.parse(response._body);      
+    //     //console.log(data);
+    //     if (objeto_retorno.result[0].status=200){//popular lista
+    //       this.listaVendedores = objeto_retorno.result[0].data;          
+    //       console.log(this.listaVendedores);
+    //     }                
+    //     this.closeLoad();
+    //     console.log("To aqui");
+    //   },error =>{
+    //     console.log(error);
+    //     this.closeLoad();
+    //   }
+    // )    
   }
 
   ionViewDidLoad() {
