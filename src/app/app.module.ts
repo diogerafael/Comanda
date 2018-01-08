@@ -17,6 +17,7 @@ import { ConfigProvider } from '../providers/config/config';
 import { ListMesasPageModule } from '../pages/list-mesas/list-mesas.module';
 import { ListMesasPage } from '../pages/list-mesas/list-mesas';
 import { MesasServiceProvider } from '../providers/mesas-service/mesas-service';
+import { SecaoServiveProvider } from '../providers/secao-servive/secao-servive';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { MesasServiceProvider } from '../providers/mesas-service/mesas-service';
     VendedoresServiceProvider,
     ProdutosServiceProvider,
     ConfigProvider,
-    MesasServiceProvider
+    MesasServiceProvider,
+    SecaoServiveProvider
   ]
 })
 export class AppModule {}

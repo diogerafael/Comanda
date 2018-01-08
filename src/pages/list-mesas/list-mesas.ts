@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MesasServiceProvider } from '../../providers/mesas-service/mesas-service';
+import { Mesa } from './mesa.model';
 //import {MesasServiceProvider} from '../../providers/'
 
 /**
@@ -17,7 +18,8 @@ import { MesasServiceProvider } from '../../providers/mesas-service/mesas-servic
   providers:[MesasServiceProvider]
 })
 export class ListMesasPage {
-   mesas: Array<{ numero: number, status: number }>;
+  //  mesas: Array<{ numero: number, status: number }>;
+   mesas:Mesa[];
 
   //  [
   //   {
@@ -56,21 +58,22 @@ export class ListMesasPage {
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private mesasServiceProvider:MesasServiceProvider ) {
-    this.mesas = [{numero:1,
-      status:0},
-      {numero:2,
-      status:0},
-      {numero:3,
-      status:1},
-      {numero:4,
-      status:0}
-    ];
+    // this.mesas = [{numero:1,
+    //   status:0},
+    //   {numero:2,
+    //   status:0},
+    //   {numero:3,
+    //   status:1},
+    //   {numero:4,
+    //   status:0}
+    // ];
     console.log(this.mesas);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListMesasPage');
-
+    //load mesas
+    
+   
   }
 
   openPageSecao(){

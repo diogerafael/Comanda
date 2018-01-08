@@ -23,8 +23,8 @@ export class LoginPage {
   //public listaVendedores = Array<any>();
   listaVendedores : Vendedor[];
   
-  public selectecUser = {save_login:false,cod_user:0,pass_user:"",};
-
+  public selectecUser : {save_login:false,cod_user:0,pass_user:""};
+  selectedVendedor:Vendedor;
   public backgroundImage = 'assets/imgs/background/principal.png';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
