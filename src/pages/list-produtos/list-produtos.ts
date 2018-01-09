@@ -13,9 +13,11 @@ import { ProdutosServiceProvider } from '../../providers/produtos-service/produt
 export class ListProdutosPage {
   selectedItem: any;
   public produtos : Array<{promocaoPro:number,nomePro:string,codro:number,controlaEstoquePro:string,valorPro:number}>;
+  private codSecao:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
             private produtosServiceProvider:ProdutosServiceProvider ) {
+    this.codSecao = navParams.get("codsecao");
   }
 
   ionViewDidLoad() {
@@ -24,12 +26,12 @@ export class ListProdutosPage {
 
   ionViewDidEnter(){
     //carregar produtos
-      
+
   }
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    console.log(item);    
+    console.log(item);
   }
 
 
@@ -52,23 +54,23 @@ export class ListProdutosPage {
   }
 
 
-  loadData(val:string){
-    this.produtosServiceProvider.getProdutosByDesc(val).subscribe(
+  loadData(val:number){
+    this.produtosServiceProvider.getProdutos(val).subscribe(
       data=>{
         const response = (data as any);
         const objeto_retorno = JSON.parse(response._body);
         console.log(objeto_retorno);
         //console.log(data);
         if (objeto_retorno.result[0].status=200){//popular lista
-          this.produtos = objeto_retorno.result[0].data;          
-        }                
+          this.produtos = objeto_retorno.result[0].data;
+        }
         //this.closeLoad();
         console.log(this.produtos);
       },error =>{
         console.log(error);
        // this.closeLoad();
       }
-    )    
+    )
   }
 
 }

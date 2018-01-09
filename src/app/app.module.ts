@@ -18,6 +18,8 @@ import { ListMesasPageModule } from '../pages/list-mesas/list-mesas.module';
 import { ListMesasPage } from '../pages/list-mesas/list-mesas';
 import { MesasServiceProvider } from '../providers/mesas-service/mesas-service';
 import { SecaoServiveProvider } from '../providers/secao-service/secao-service';
+import {ListSecaoPage} from "../pages/list-secao/list-secao";
+import {ListSecaoPageModule} from "../pages/list-secao/list-secao.module";
 
 @NgModule({
   declarations: [
@@ -31,14 +33,16 @@ import { SecaoServiveProvider } from '../providers/secao-service/secao-service';
     HttpModule,
     ListProdutosPageModule,
     ConfigPageModule,
-    ListMesasPageModule
+    ListMesasPageModule,
+    ListSecaoPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     LoginPage,
-    ListMesasPage
+    ListMesasPage,
+    ListSecaoPage
   ],
   providers: [
     StatusBar,

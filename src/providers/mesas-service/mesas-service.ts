@@ -16,12 +16,12 @@ export class MesasServiceProvider {
     console.log('Hello MesasServiceProvider Provider');
   }
 
-  getMesas(ANrMesa:string){
-    return this.http.get("http://localhost:8080/datasnap/rest/TTSM/Vendas/"+ANrMesa);
-  }
+  // getMesas(ANrMesa:string){
+  //   return this.http.get("http://localhost:8080/datasnap/rest/TTSM/Vendas/"+ANrMesa);
+  // }
 
   getMesas():Observable<Mesa[]>{
-    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Secao").
+    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Vendas/0").
     map(response => response.json().result[0].data);
   }
 

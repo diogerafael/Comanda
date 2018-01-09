@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {Secao} from "./secao.model";
 import {SecaoServiveProvider} from "../../providers/secao-service/secao-service";
+import {ListProdutosPage} from "../list-produtos/list-produtos";
 
 
 @IonicPage()
@@ -36,6 +37,10 @@ export class ListSecaoPage {
 
   closeLoad(){
     this.loading.dismiss();
+  }
+
+  openPageProdutos(){
+    this.navCtrl.push(ListProdutosPage);
   }
 
 }

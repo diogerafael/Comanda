@@ -73,8 +73,10 @@ export class ListMesasPage {
 
   ionViewDidLoad() {
     //load mesas
+    this.mesasServiceProvider.getMesas().subscribe(Vendas =>
+      this.mesas = Vendas)
 
-
+    console.log(this.mesas);
   }
 
   openPageSecao(){

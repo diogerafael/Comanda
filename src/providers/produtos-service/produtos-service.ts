@@ -1,5 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import {Observable} from "rxjs/Observable";
+import {Produto} from "../../pages/list-produtos/produto.model";
 
 /*
   Generated class for the ProdutosServiceProvider provider.
@@ -14,12 +16,13 @@ export class ProdutosServiceProvider {
     console.log('Hello ProdutosServiceProvider Provider');
   }
 
-  getProdutos(){
-    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Produtos");
+  getProdutosByDesc(ADesc:string){
+    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Produtos/0/"+ADesc);
   }
 
-  getProdutosByDesc(ADesc){
-    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Produtos/0/"+ADesc);
+  getProdutos(ACodSec:number):Observable<Produto[]>{
+    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Produtos/0//"+ACodSec).
+      map(response => response.json().result[0].data);
   }
 
 }
