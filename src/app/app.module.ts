@@ -17,7 +17,7 @@ import { ConfigProvider } from '../providers/config/config';
 import { ListMesasPageModule } from '../pages/list-mesas/list-mesas.module';
 import { ListMesasPage } from '../pages/list-mesas/list-mesas';
 import { MesasServiceProvider } from '../providers/mesas-service/mesas-service';
-import { SecaoServiveProvider } from '../providers/secao-servive/secao-servive';
+import { SecaoServiveProvider } from '../providers/secao-service/secao-service';
 
 @NgModule({
   declarations: [

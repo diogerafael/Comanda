@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MesasServiceProvider } from '../../providers/mesas-service/mesas-service';
 import { Mesa } from './mesa.model';
+import {ListSecaoPage} from "../list-secao/list-secao";
 //import {MesasServiceProvider} from '../../providers/'
 
 /**
@@ -55,7 +56,7 @@ export class ListMesasPage {
 
    myColorClosed = "#199716";
    myColorOpened = "#ef1240";
-  
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private mesasServiceProvider:MesasServiceProvider ) {
     // this.mesas = [{numero:1,
@@ -72,12 +73,12 @@ export class ListMesasPage {
 
   ionViewDidLoad() {
     //load mesas
-    
-   
+
+
   }
 
   openPageSecao(){
-    //this.navCtrl.push();
+    this.navCtrl.push(ListSecaoPage);
   }
 
   openPagePedido(){

@@ -1,25 +1,41 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {Secao} from "./secao.model";
+import {SecaoServiveProvider} from "../../providers/secao-service/secao-service";
 
-/**
- * Generated class for the ListSecaoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-list-secao',
   templateUrl: 'list-secao.html',
+  providers:[SecaoServiveProvider]
 })
 export class ListSecaoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  secoes:Secao[];
+  public loading;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private secaoservice:SecaoServiveProvider,private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListSecaoPage');
+    //console.log('ionViewDidLoad ListSecaoPage');
+    this.openLoad();
+    this.secaoservice.getSecoes().subscribe(Secao =>
+    this.secoes = Secao)
+    this.closeLoad();
+  }
+
+  openLoad() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Carregando Dados...'
+    });
+    this.loading.present();
+  }
+
+  closeLoad(){
+    this.loading.dismiss();
   }
 
 }

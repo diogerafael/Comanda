@@ -5,7 +5,7 @@ import { errorHandler } from '@angular/platform-browser/src/browser';
 import { ListProdutosPage } from '../list-produtos/list-produtos';
 import { ConfigPage } from '../config/config';
 import {ConfigProvider} from '../../providers/config/config'
-import { ListMesasPage } from '../list-mesas/list-mesas'; 
+import { ListMesasPage } from '../list-mesas/list-mesas';
 import {Vendedor} from '../login/vendedor.model';
 
 @IonicPage()
@@ -22,7 +22,7 @@ export class LoginPage {
   public loading;
   //public listaVendedores = Array<any>();
   listaVendedores : Vendedor[];
-  
+
   public selectecUser : {save_login:false,cod_user:0,pass_user:""};
   selectedVendedor:Vendedor;
   public backgroundImage = 'assets/imgs/background/principal.png';
@@ -39,29 +39,29 @@ export class LoginPage {
   ionViewDidEnter() {
     this.openLoad();
     this.vendedorService.getVendedores().subscribe(Vendedores =>
-      { 
+      {
         console.log(Vendedores);
         this.listaVendedores = Vendedores})
     console.log(this.listaVendedores
     );
-    this.closeLoad();;
-    
+    this.closeLoad();
+
     // this.vendedorService.getVendedores().subscribe(
     //   data=>{
     //     const response = (data as any);
-    //     const objeto_retorno = JSON.parse(response._body);      
+    //     const objeto_retorno = JSON.parse(response._body);
     //     //console.log(data);
     //     if (objeto_retorno.result[0].status=200){//popular lista
-    //       this.listaVendedores = objeto_retorno.result[0].data;          
+    //       this.listaVendedores = objeto_retorno.result[0].data;
     //       console.log(this.listaVendedores);
-    //     }                
+    //     }
     //     this.closeLoad();
     //     console.log("To aqui");
     //   },error =>{
     //     console.log(error);
     //     this.closeLoad();
     //   }
-    // )    
+    // )
   }
 
   ionViewDidLoad() {
@@ -72,19 +72,19 @@ export class LoginPage {
     //     console.log(objeto_retorno);
     //     //console.log(data);
     //     if (objeto_retorno.result[0].status=200){//popular lista
-    //       this.listaVendedores = objeto_retorno.result[0].data;          
-    //     }        
+    //       this.listaVendedores = objeto_retorno.result[0].data;
+    //     }
     //     console.log(this.listaVendedores);
     //   },error =>{
     //     console.log(error);
     //   }
-    // )    
+    // )
   }
 
   openLoad() {
     this.loading = this.loadingCtrl.create({
       content: 'Carregando Dados...'
-    });  
+    });
     this.loading.present();
   }
 
@@ -104,7 +104,7 @@ export class LoginPage {
 
   logar(){
     console.log(this.selectecUser);
-    this.configProvider.setConfigData(this.selectecUser.save_login,this.selectecUser.cod_user);
+    //this.configProvider.setConfigData(this.selectecUser.save_login,this.selectecUser.cod_user);
     this.navCtrl.push(ListMesasPage);
   }
 
