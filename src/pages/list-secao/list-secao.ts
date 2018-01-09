@@ -15,6 +15,7 @@ export class ListSecaoPage {
 
   secoes:Secao[];
   public loading;
+  codSecao:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private secaoservice:SecaoServiveProvider,private loadingCtrl: LoadingController) {
@@ -22,13 +23,13 @@ export class ListSecaoPage {
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad ListSecaoPage');
-    this.openLoad();
+    //this.openLoad();
     this.secaoservice.getSecoes().subscribe(Secao =>
     this.secoes = Secao)
-    this.closeLoad();
+    //this.closeLoad();
   }
 
-  openLoad() {
+  openLoad(Value) {
     this.loading = this.loadingCtrl.create({
       content: 'Carregando Dados...'
     });
@@ -40,7 +41,8 @@ export class ListSecaoPage {
   }
 
   openPageProdutos(){
-    this.navCtrl.push(ListProdutosPage);
+    console.log(this.codSecao);
+    //this.navCtrl.push(ListProdutosPage,codSecao:);
   }
 
 }

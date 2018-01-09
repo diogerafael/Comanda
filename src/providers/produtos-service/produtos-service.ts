@@ -17,11 +17,11 @@ export class ProdutosServiceProvider {
   }
 
   getProdutosByDesc(ADesc:string){
-    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Produtos/0/"+ADesc);
+    return this.http.get("http://127.0.0.1:8080/datasnap/rest/TTSM/Produtos/0/"+ADesc);
   }
 
   getProdutos(ACodSec:number):Observable<Produto[]>{
-    return this.http.get("http://192.168.1.13:8080/datasnap/rest/TTSM/Produtos/0//"+ACodSec).
+    return this.http.get("http://127.0.0.1:8080/datasnap/rest/TTSM/Produtos/0//"+ACodSec).
       map(response => response.json().result[0].data);
   }
 

@@ -15,6 +15,6 @@
 
 <ion-content padding>
 
-    <button  (click)="" ion-button large  *ngFor="let sec of secoes" >{{sec.nomeSec}}</button>
+    <button style="width: 15%" (click)="openPageProdutos()"  ion-button large [value]="codSecao" *ngFor="let sec of secoes" >{{sec.nomeSec}}</button>
 
 </ion-content>

@@ -16,7 +16,7 @@
 <ion-content padding style="margin-left: 5%;margin-right: 5%">
 
   <button  (click)="openPageSecao()" ion-button large  *ngFor="let mesa of mesas"
-           [style.backgroundColor]="mesa.status==0 ? myColorOpened :myColorClosed">
+           [style.backgroundColor]="mesa.status==0 ? myColorOpened :myColorClosed" style="width: 15%">
       <ion-icon name="basket" style="margin-right: 5%" >{{mesa.conta}}</ion-icon>
     {{mesa.numero}}</button>
 

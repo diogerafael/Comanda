@@ -21,7 +21,8 @@ export class ListProdutosPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListProdutosPage');
+    //console.log('ionViewDidLoad ListProdutosPage');
+    
   }
 
   ionViewDidEnter(){
