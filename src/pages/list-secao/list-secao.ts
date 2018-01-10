@@ -15,7 +15,6 @@ export class ListSecaoPage {
 
   secoes:Secao[];
   public loading;
-  codSecao:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private secaoservice:SecaoServiveProvider,private loadingCtrl: LoadingController) {
@@ -40,9 +39,9 @@ export class ListSecaoPage {
     this.loading.dismiss();
   }
 
-  openPageProdutos(){
-    console.log(this.codSecao);
-    //this.navCtrl.push(ListProdutosPage,codSecao:);
+  openPageProdutos(AcodSec:string){
+    console.log("aqui"+AcodSec);
+    this.navCtrl.push(ListProdutosPage,{codsecao:AcodSec});
   }
 
 }

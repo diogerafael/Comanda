@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProdutosServiceProvider } from '../../providers/produtos-service/produtos-service';
+import {Produto} from "./produto.model";
 
 
 
@@ -12,17 +13,18 @@ import { ProdutosServiceProvider } from '../../providers/produtos-service/produt
 })
 export class ListProdutosPage {
   selectedItem: any;
-  public produtos : Array<{promocaoPro:number,nomePro:string,codro:number,controlaEstoquePro:string,valorPro:number}>;
+  public produtos : Produto[];//Array<{promocaoPro:number,nomePro:string,codro:number,controlaEstoquePro:string,valorPro:number}>;
   private codSecao:number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+    constructor(public navCtrl: NavController, public navParams: NavParams,
             private produtosServiceProvider:ProdutosServiceProvider ) {
     this.codSecao = navParams.get("codsecao");
+    console.log(this.codSecao);
   }
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad ListProdutosPage');
-    
+  this.loaddData();
   }
 
   ionViewDidEnter(){
@@ -50,28 +52,36 @@ export class ListProdutosPage {
        //  return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       // })
      }else{
-       this.produtos = null;
+        this.loaddData();
      }
   }
 
+  loaddData(){
+   // this.openLoad();
+    this.produtosServiceProvider.getProdutos(this.codSecao).subscribe(Produtos =>
+    {
+      console.log(Produtos);
+      this.produtos = Produtos})
+    console.log(this.produtos
+    );
+   // this.closeLoad();
+  }
 
-  loadData(val:number){
-    this.produtosServiceProvider.getProdutos(val).subscribe(
-      data=>{
-        const response = (data as any);
-        const objeto_retorno = JSON.parse(response._body);
-        console.log(objeto_retorno);
-        //console.log(data);
-        if (objeto_retorno.result[0].status=200){//popular lista
-          this.produtos = objeto_retorno.result[0].data;
-        }
-        //this.closeLoad();
-        console.log(this.produtos);
-      },error =>{
-        console.log(error);
-       // this.closeLoad();
-      }
-    )
+  loadData(val:string){
+    this.produtosServiceProvider.getProdutos(this.codSecao,val).subscribe(Produtos =>
+    {
+      console.log(Produtos);
+      this.produtos = Produtos})
+    console.log(this.produtos
+    );
+  }
+
+  addItem(ACodProduto){
+
+  }
+
+  remItem(){
+
   }
 
 }

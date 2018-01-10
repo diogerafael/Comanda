@@ -20,9 +20,15 @@ export class ProdutosServiceProvider {
     return this.http.get("http://127.0.0.1:8080/datasnap/rest/TTSM/Produtos/0/"+ADesc);
   }
 
-  getProdutos(ACodSec:number):Observable<Produto[]>{
-    return this.http.get("http://127.0.0.1:8080/datasnap/rest/TTSM/Produtos/0//"+ACodSec).
-      map(response => response.json().result[0].data);
+
+  getProdutos(ACodSec:number,ADesc?:string):Observable<Produto[]> {
+    if (ADesc) {
+      return this.http.get("http://127.0.0.1:8080/datasnap/rest/TTSM/Produtos/0/" + ADesc + "/" + ACodSec).map(response => response.json().result[0].data);
+
+    } else {
+    return this.http.get("http://127.0.0.1:8080/datasnap/rest/TTSM/Produtos/0//" + ACodSec).map(response => response.json().result[0].data);
+  }
+
   }
 
 }
